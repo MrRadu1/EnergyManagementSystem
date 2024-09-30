@@ -1,0 +1,124 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.10
+
+  devices:
+    build:
+      context: ./devices
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    depends_on:
+      - devicesdb
+      - usersdb
+      - rabbitmq
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.11
+
+  users:
+    build:
+      context: ./users
+    ports:
+      - "8080:8080"
+    depends_on:
+      - usersdb
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.12
+
+  chat:
+    build:
+      context: ./chat
+    ports:
+      - "8085:8085"
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.17
+
+  monitoring:
+    build:
+      context: ./monitoring
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    depends_on:
+      - monitoringdb
+      - rabbitmq
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.15
+
+
+  usersdb:
+    image: postgres:latest
+    container_name: usersdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: usersdb
+    ports:
+      - "1234:5432"
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.13
+
+  devicesdb:
+    image: postgres:latest
+    container_name: devicesdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: devicesdb
+    ports:
+      - "1235:5432"
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.14
+
+  monitoringdb:
+    image: postgres:latest
+    container_name: monitoringdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: monitoringdb
+
+    ports:
+      - "1236:5432"
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.16
+
+  rabbitmq:
+    image: rabbitmq:management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      ds-network:
+        ipv4_address: 172.16.200.20
+
+networks:
+  ds-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.200.0/24"

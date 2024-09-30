@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="app" />
+        <module name="monitoring" />
+        <module name="devices" />
+        <module name="users" />
+        <module name="chat" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="app" target="17" />
+      <module name="chat" target="17" />
+      <module name="devices" target="17" />
+      <module name="monitoring" target="17" />
+      <module name="users" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="app" options="-parameters" />
+      <module name="chat" options="-parameters" />
+      <module name="devices" options="-parameters" />
+      <module name="monitoring" options="-parameters" />
+      <module name="users" options="-parameters" />
+    </option>
+  </component>
+</project>

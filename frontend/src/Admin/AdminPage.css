@@ -1,0 +1,141 @@
+/* Your CSS file or AdminPage.css */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #007bff, #002b64);
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .admin-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .admin-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-list {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .admin-list:last-child {
+    margin-right: 0;
+  }
+  
+  .logout-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Adjust the width as needed */
+  margin-left: 20px; /* Adjust the margin as needed */
+}
+
+/* Chat Tabs */
+.chat-tabs {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.chat-tab {
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #000000;
+  transition: background-color 0.3s ease;
+}
+
+
+.active-tab {
+  background-color: #7FF50F; /* Active tab color */
+  color: #000;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Message Styles */
+.message {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.sent-message {
+  background-color: #4caf50; /* or any color you prefer for sent messages */
+  color: #fff;
+  text-align: right; /* Align sent messages to the right */
+}
+
+.received-message {
+  background-color: #e0e0e0; /* or any color you prefer for received messages */
+}
+
+/* Chat Input */
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Typing Notification */
+.typing-notification {
+  color: #777;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+/* Notification */
+.notification {
+  color: #ff0000; /* Adjust the color as needed */
+  margin-top: 5px;
+}
